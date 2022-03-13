@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="m-auto container">
+    <div class="row">
+        <div class="col-6 m-auto">
+            <form>
+                <div class="form-group">
+                    <label>Enter pages path here</label>
+                    <br />
+                    <input asp-for="@Model.PagesPath" class="form-control" type="text" />
+                </div>
+                <div class="form-group">
+                    <button class="form-control btn btn-primary" type="submit">Start localization proccess</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <script>
+        function localize() {
+
+            fetch('file:///E:/test_files/About.cshtml')
+                .then(response => response.text())
+                .then((data) => {
+                    console.log(data)
+                })
+        }
+    </script>
+}
