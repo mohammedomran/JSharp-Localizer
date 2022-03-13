@@ -1,5 +1,10 @@
-# JSharp-Localizer
-HI, This is my localization tool for ASP.NET Core applications
+# JSharp Localizer
+## localization tool for ASP.NET Core applications
+
+
+- ✨Magic ✨
+
+## Features
 I've made it to automate my work which was :
 1- extract static text from cshtml files to resx files
 2- create a key/value pair for each static text item
