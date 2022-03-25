@@ -4,35 +4,123 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="m-auto container">
-    <div class="row">
-        <div class="col-6 m-auto">
-            <form>
-                <div class="form-group">
-                    <label>Enter pages path here</label>
-                    <br />
-                    <input asp-for="@Model.PagesPath" class="form-control" type="text" />
-                </div>
-                <div class="form-group">
-                    <button class="form-control btn btn-primary" type="submit">Start localization proccess</button>
-                </div>
-            </form>
+    <div id="container">
+    <div class="m-auto container">
+        <div class="row">
+            <div class="col-6 m-auto">
+                <form>
+                    <div class="form-group">
+                        <label>Enter pages path here</label>
+                        <br />
+                        <input asp-for="@Model.PagesPath" class="form-control" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <button class="form-control btn btn-primary" type="submit">Start localization proccess</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
+    <div class="m-auto">
+        <div class="row">
+            <div class="col-3">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a v-for="page in LocArray" class="list-group-item list-group-item-action" :id="`list-`+page.pageName+`-list`" data-toggle="list" :href="`#list-`+page.pageName" role="tab" :aria-controls="page.pageName">{{page.pageName}}</a>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="nav-tabContent">
+                    <div v-for="page in LocArray" class="tab-pane fade show" :id="`list-`+page.pageName" role="tabpanel" :aria-labelledby="`list-`+page.pageName+`-list`">
+                        <!------------------------------------------->
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Localize</th>
+                                    <th scope="col">Key</th>
+                                    <th scope="col">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in page.data">
+                                    <th scope="row"><input type="checkbox" v-model:value="item.active" /></th>
+                                    <td><input style="word-break: break-word;" v-model:value="item.key" class="form-control" /></td>
+                                    <td>{{item.value}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!------------------------------------------->
+                    </div>
+                </div>
+                <button @@click="proccessOutput()" class="btn btn-primary">Proccess</button>
+            </div>
+        </div>
+    </div>
+
+    @*<table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Active</th>
+                <th scope="col">Key</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in LocArray">
+                <th scope="row"><input type="checkbox" v-model:value="item.active" /></th>
+                <td><input v-model:value="item.key" class="form-control" /></td>
+                <td>{{item.value}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button @@click="proccessOutput()" class="btn btn-primary">Proccess</button>*@
+</div>
 
 
 
 @section Scripts {
     <script>
-        function localize() {
-
-            fetch('file:///E:/test_files/About.cshtml')
-                .then(response => response.text())
-                .then((data) => {
-                    console.log(data)
-                })
-        }
+        new Vue({
+            el: "#container",
+            data: {
+                LocArray: [
+                    {
+                        "pageName": "About",
+                        "data": [
+                            {
+                                "key": "Loc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_Title",
+                                "value": "About Title",
+                                "active": 1,
+                            },
+                            {
+                                "key": "Loc_About_Paragraph",
+                                "value": "About Paragraph",
+                                "active": 0,
+                            }
+                        ]
+                    },
+                    {
+                        "pageName": "Contact",
+                        "data": [
+                            {
+                                "key": "Loc_Contact_Title",
+                                "value": "Contact Title",
+                                "active": 1,
+                            },
+                            {
+                                "key": "Loc_Contact_Paragraph",
+                                "value": "Contact Paragraph",
+                                "active": 0,
+                            }
+                        ]
+                    }
+                ]
+            },
+            methods: {
+                proccessOutput() {
+                    console.log(this.LocArray)
+                }
+            }
+        });
     </script>
 }
