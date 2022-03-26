@@ -4,34 +4,33 @@
     ViewData["Title"] = "Home page";
 }
 
-    <div id="container">
-    <div class="m-auto container">
+<div id="container">
+
+    <div v-bind:class="IsStep1Active ? 'd-block' : 'd-none'">
         <div class="row">
             <div class="col-6 m-auto">
-                <form>
-                    <div class="form-group">
-                        <label>Enter pages path here</label>
-                        <br />
-                        <input asp-for="@Model.PagesPath" class="form-control" type="text" />
-                    </div>
-                    <div class="form-group">
-                        <button class="form-control btn btn-primary" type="submit">Start localization proccess</button>
-                    </div>
-                </form>
+                <div class="form-group">
+                    <label>Enter pages path here</label>
+                    <br />
+                    <input v-model="Directory" asp-for="@Model.PagesPath" class="form-control" type="text" />
+                </div>
+                <div class="form-group">
+                    <button @@click="SendDirectory" class="form-control btn btn-primary">Start localization proccess</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="m-auto">
+    <div v-bind:class="IsStep2Active ? 'd-block' : 'd-none'">
         <div class="row">
             <div class="col-3">
                 <div class="list-group" id="list-tab" role="tablist">
-                    <a v-for="page in LocArray" class="list-group-item list-group-item-action" :id="`list-`+page.pageName+`-list`" data-toggle="list" :href="`#list-`+page.pageName" role="tab" :aria-controls="page.pageName">{{page.pageName}}</a>
+                    <a v-for="page in LocArray" class="list-group-item list-group-item-action" :id="`list-`+page.PageName+`-list`" data-toggle="list" :href="`#list-`+page.PageName" role="tab" :aria-controls="page.PageName">{{page.PageName}}</a>
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="nav-tabContent">
-                    <div v-for="page in LocArray" class="tab-pane fade show" :id="`list-`+page.pageName" role="tabpanel" :aria-labelledby="`list-`+page.pageName+`-list`">
+                    <div v-for="page in LocArray" class="tab-pane fade show" :id="`list-`+page.PageName" role="tabpanel" :aria-labelledby="`list-`+page.PageName+`-list`">
                         <!------------------------------------------->
                         <table class="table table-borderless">
                             <thead>
@@ -42,10 +41,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="item in page.data">
-                                    <th scope="row"><input type="checkbox" v-model:value="item.active" /></th>
-                                    <td><input style="word-break: break-word;" v-model:value="item.key" class="form-control" /></td>
-                                    <td>{{item.value}}</td>
+                                <tr v-for="item in page.Data">
+                                    <th scope="row"><input type="checkbox" v-model:value="item.Active" /></th>
+                                    <td><input style="word-break: break-word;" v-model:value="item.Key" class="form-control" /></td>
+                                    <td>{{item.Value}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -58,68 +57,58 @@
     </div>
 
     @*<table class="table table-borderless">
-        <thead>
-            <tr>
-                <th scope="col">Active</th>
-                <th scope="col">Key</th>
-                <th scope="col">Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="item in LocArray">
-                <th scope="row"><input type="checkbox" v-model:value="item.active" /></th>
-                <td><input v-model:value="item.key" class="form-control" /></td>
-                <td>{{item.value}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <button @@click="proccessOutput()" class="btn btn-primary">Proccess</button>*@
+            <thead>
+                <tr>
+                    <th scope="col">Active</th>
+                    <th scope="col">Key</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in LocArray">
+                    <th scope="row"><input type="checkbox" v-model:value="item.active" /></th>
+                    <td><input v-model:value="item.key" class="form-control" /></td>
+                    <td>{{item.value}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button @@click="proccessOutput()" class="btn btn-primary">Proccess</button>*@
 </div>
 
 
 
 @section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+
         new Vue({
             el: "#container",
             data: {
-                LocArray: [
-                    {
-                        "pageName": "About",
-                        "data": [
-                            {
-                                "key": "Loc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_TitleLoc_About_Title",
-                                "value": "About Title",
-                                "active": 1,
-                            },
-                            {
-                                "key": "Loc_About_Paragraph",
-                                "value": "About Paragraph",
-                                "active": 0,
-                            }
-                        ]
-                    },
-                    {
-                        "pageName": "Contact",
-                        "data": [
-                            {
-                                "key": "Loc_Contact_Title",
-                                "value": "Contact Title",
-                                "active": 1,
-                            },
-                            {
-                                "key": "Loc_Contact_Paragraph",
-                                "value": "Contact Paragraph",
-                                "active": 0,
-                            }
-                        ]
-                    }
-                ]
+                IsStep1Active: true,
+                IsStep2Active: false,
+                Directory: "",
+                LocArray: []
             },
             methods: {
                 proccessOutput() {
                     console.log(this.LocArray)
-                }
+                },
+                SendDirectory() {
+                        axios.post('https://localhost:44323/Api/Localization?PagesPath=' + this.Directory, {
+
+                        })
+                        .then((response) => {
+                            this.LocArray = response.data;
+                            this.IsStep1Active = false;
+                            this.IsStep2Active = true;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                },
+            },
+            mounted() {
+
             }
         });
     </script>
