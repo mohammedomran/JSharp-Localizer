@@ -51,7 +51,7 @@
                         <!------------------------------------------->
                     </div>
                 </div>
-                <button @@click="proccessOutput()" class="btn btn-primary">Proccess</button>
+                <button @@click="StoreLocalizationData()" class="btn btn-primary">Start Localization proccess</button>
             </div>
         </div>
     </div>
@@ -90,21 +90,29 @@
                 LocArray: []
             },
             methods: {
-                proccessOutput() {
-                    console.log(this.LocArray)
-                },
                 SendDirectory() {
-                        axios.post('https://localhost:44323/Api/Localization?PagesPath=' + this.Directory, {
+                    axios.post('https://localhost:44323/Api/Localization?PagesPath=' + this.Directory, {
 
-                        })
-                        .then((response) => {
-                            this.LocArray = response.data;
-                            this.IsStep1Active = false;
-                            this.IsStep2Active = true;
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        })
+                    })
+                    .then((response) => {
+                        this.LocArray = response.data;
+                        this.IsStep1Active = false;
+                        this.IsStep2Active = true;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+                },
+                StoreLocalizationData() {
+                    axios.post('https://localhost:44323/Api/Localization/store', 
+                        this.LocArray
+                    )
+                    .then((response) => {
+                        console.log(response)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
                 },
             },
             mounted() {

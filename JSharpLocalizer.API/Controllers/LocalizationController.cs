@@ -8,6 +8,7 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace JSharpLocalizer.API.Controllers
 {
@@ -17,8 +18,27 @@ namespace JSharpLocalizer.API.Controllers
 
     public class LocalizationController : ControllerBase
     {
+
+        [HttpPost("store")]
+        public ActionResult<IEnumerable<Localizer>> StoreLocalizationKeysValues([FromBody] IEnumerable<LocalizerPage> localizerPages)
+        {
+            foreach (var locPage in localizerPages)
+            {
+                using (ResXResourceWriter resx = new ResXResourceWriter(@"C:\Users\Mohammed Omran\source\repos\JSharp Localizer\JSharp.Core\wwwroot\Resources\" + locPage.PageName + ".en-GB.resx"))
+                {
+                    foreach (var localizer in locPage.Data)
+                    {
+                        if(localizer.Active)
+                            resx.AddResource(localizer.Key, localizer.Value);
+                    }
+                }
+            }
+
+            return Ok("Done");
+        }
+
         [HttpPost]
-        public ActionResult<IEnumerable<Localizer>> GetLocalizationKeysValues([FromQuery]string PagesPath)
+        public ActionResult<IEnumerable<Localizer>> GetLocalizationKeysValues([FromQuery] string PagesPath)
         {
             if (string.IsNullOrEmpty(PagesPath))
             {
@@ -44,7 +64,7 @@ namespace JSharpLocalizer.API.Controllers
                 List<Localizer> localizers = new List<Localizer>();
                 foreach (HtmlNode node in pageDoc.DocumentNode.SelectNodes("//text()[normalize-space()]"))
                 {
-                    if (!string.IsNullOrEmpty(node.InnerText) && 
+                    if (!string.IsNullOrEmpty(node.InnerText) &&
                         !node.InnerText.Contains("@") &&
                         !node.InnerText.Contains("{") &&
                         !node.InnerText.Contains("}")
