@@ -42,8 +42,8 @@
                             </thead>
                             <tbody>
                                 <tr v-for="item in page.Data">
-                                    <th scope="row"><input type="checkbox" v-model:value="item.Active" /></th>
-                                    <td><input style="word-break: break-word;" v-model:value="item.Key" class="form-control" /></td>
+                                    <th class="col-1" scope="row"><input type="checkbox" v-model:value="item.Active" /></th>
+                                    <td class="col-5"><input style="word-break: break-word;" v-model:value="item.Key" class="form-control" /></td>
                                     <td>{{item.Value}}</td>
                                 </tr>
                             </tbody>

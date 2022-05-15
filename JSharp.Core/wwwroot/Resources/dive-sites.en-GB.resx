@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="DiveSites"><value>Dive Sites</value></data>
+  <data name="SharmElSheikhislocatedinbetweentheGulfofAqaba,theGulfofSuez,andtheopenbody&#xD;&#xA;oftheRedSea.Asaconsequence,atthetipoftheSinaiPeninsulathosethreedifferent&#xD;&#xA;watersmeet,resultinginarichenvironmentandfeedingcurrentssuitablefortheoptimal&#xD;&#xA;growthofcoralsandmarinelife."><value>Sharm El Sheikh is located in between the Gulf of Aqaba, the Gulf of Suez, and the open body
+                        of the Red Sea. As a consequence, at the tip of the Sinai Peninsula those three different
+                        waters meet, resulting in a rich environment and feeding currents suitable for the optimal
+                        growth of corals and marine life.</value></data>
+  <data name="Weoftenseebigfishlikesharks,mantas,whalesharks,orotheranimalsliketurtles,&#xD;&#xA;andevendolphins.Throughoutthejourney,thebeautyoftheSinaiMountainsadornsthe&#xD;&#xA;settingforaperfectbackground."><value>We often see big fish like sharks, mantas, whale sharks, or other animals like turtles,
+                        and even dolphins. Throughout the journey, the beauty of the Sinai Mountains adorns the
+                        setting for a perfect background.</value></data>
+  <data name="Inotherwords:Wetakeyoutosomeofthebestdivesitesintheworld."><value>In other words: We take you to some of the best dive sites in the world.</value></data>
+  <data name="Schedule"><value>Schedule</value></data>
+  <data name="DivethebestofSharmElSheikh"><value>Dive the best of Sharm El Sheikh</value></data>
+  <data name="Loremipsumdolorsitamet,consecteturadipisicingelit&#xD;&#xA;seddoeiusmodtemporincididuntutlaboreet"><value>Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                            sed do eiusmod tempor incididunt ut labore et</value></data>
+  <data name="Wreck"><value>Wreck</value></data>
+  <data name="ReadMore"><value>Read More</value></data>
+  <data name="ViewMap"><value>View Map</value></data>
+  </root>

@@ -18,21 +18,31 @@ namespace JSharpLocalizer.API.Controllers
 
     public class LocalizationController : ControllerBase
     {
+        public ILocalizationService LocalizationService { get; }
+
+        public LocalizationController(ILocalizationService localizationService)
+        {
+            LocalizationService = localizationService;
+        }
 
         [HttpPost("store")]
         public ActionResult<IEnumerable<Localizer>> StoreLocalizationKeysValues([FromBody] IEnumerable<LocalizerPage> localizerPages)
         {
+            // create resource files and store key/value pairs in it
             foreach (var locPage in localizerPages)
             {
-                using (ResXResourceWriter resx = new ResXResourceWriter(@"C:\Users\Mohammed Omran\source\repos\JSharp Localizer\JSharp.Core\wwwroot\Resources\" + locPage.PageName + ".en-GB.resx"))
+                using (ResXResourceWriter resx = new ResXResourceWriter(@"D:\Clients\Circle Divers\Code\DivingCenter.UI\wwwroot\Resources\" + locPage.PageName + ".en-GB.resx"))
                 {
                     foreach (var localizer in locPage.Data)
                     {
                         if(localizer.Active)
-                            resx.AddResource(localizer.Key, localizer.Value);
+                            resx.AddResource(localizer.Key.Trim(), localizer.Value.Trim());
                     }
                 }
             }
+
+            //update cshtml files
+            LocalizationService.UpdateCshtmlFiles(@"D:\Clients\Circle Divers\Code\DivingCenter.UI\Pages", localizerPages);
 
             return Ok("Done");
         }
@@ -67,7 +77,10 @@ namespace JSharpLocalizer.API.Controllers
                     if (!string.IsNullOrEmpty(node.InnerText) &&
                         !node.InnerText.Contains("@") &&
                         !node.InnerText.Contains("{") &&
-                        !node.InnerText.Contains("}")
+                        !node.InnerText.Contains("}") &&
+                        !node.InnerText.All(char.IsDigit) &&
+                        !node.InnerText.Contains("$") &&
+                        !node.InnerText.Contains("€")
                         )
                     {
                         var oldText = node.InnerText;

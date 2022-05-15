@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "6ccc990b-c422-4863-a7ab-51d25922ab8b": {
+      "ProjectGuid": "6ccc990b-c422-4863-a7ab-51d25922ab8b",
+      "DisplayName": "JSharpLocalizer.API",
+      "ColorIndex": 0
+    },
+    "ef964a0f-7365-4a80-a913-8442bce1086f": {
+      "ProjectGuid": "ef964a0f-7365-4a80-a913-8442bce1086f",
+      "DisplayName": "JSharp.Core",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

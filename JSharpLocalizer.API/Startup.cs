@@ -38,6 +38,7 @@ namespace JSharpLocalizer.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "JSharpLocalizer.API", Version = "v1" });
             });
 
+            services.AddScoped<ILocalizationService, LocalizationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

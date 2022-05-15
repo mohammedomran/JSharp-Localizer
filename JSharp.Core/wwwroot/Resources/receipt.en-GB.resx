@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="Congratulations"><value>Congratulations</value></data>
+  <data name="Yourbookinghasbeenbooked"><value>Your booking has been booked</value></data>
+  <data name="CircleDivers"><value>Circle Divers</value></data>
+  <data name="BookingNO:"><value>Booking NO:</value></data>
+  <data name="BookingInformation"><value>Booking Information</value></data>
+  <data name="Name:"><value>Name :</value></data>
+  <data name="Country:"><value>Country :</value></data>
+  <data name="Adults:"><value>Adults :</value></data>
+  <data name="Email:"><value>Email :</value></data>
+  <data name="BookingDate:"><value>Booking Date :</value></data>
+  <data name="Children:"><value>Children :</value></data>
+  <data name="Phone:"><value>Phone :</value></data>
+  <data name="Check-in:"><value>Check-in :</value></data>
+  <data name="Notes:"><value>Notes :</value></data>
+  <data name="BookedServices"><value>Booked Services</value></data>
+  <data name="Item"><value>Item</value></data>
+  <data name="AdultsPrice"><value>Adults Price</value></data>
+  <data name="ChildrenPrice"><value>Children Price</value></data>
+  <data name="Total"><value>Total</value></data>
+  <data name="Terms&amp;Conditions"><value>Terms &amp; Conditions</value></data>
+  <data name="Loremipsumdolorsitamet,consecteturadipiscingelit.Nullamauctoraliquamfelis,sitamettempusnibhullamcorpernec.&#xD;&#xA;MaecenassuscipitdoloratblanditLoremipsumdolorsitamet,consecteturadipiscingelit.Nullamauctoraliquamfelis,&#xD;&#xA;sitamettempusnibhullamcorpernec.MaecenassuscipitdoloratblanditLoremipsumdolor"><value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor aliquam felis, sit amet tempus nibh ullamcorper nec.
+                        Maecenas suscipit dolor at blandit  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor aliquam felis,
+                        sit amet tempus nibh ullamcorper nec. Maecenas suscipit dolor at blandit  Lorem ipsum dolor</value></data>
+  <data name="Website:"><value>Website:</value></data>
+  <data name="Print"><value>Print</value></data>
+  </root>
