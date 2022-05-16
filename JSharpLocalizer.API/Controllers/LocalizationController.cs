@@ -31,7 +31,7 @@ namespace JSharpLocalizer.API.Controllers
             // create resource files and store key/value pairs in it
             foreach (var locPage in localizerPages)
             {
-                using (ResXResourceWriter resx = new ResXResourceWriter(@"D:\Clients\Circle Divers\Code\DivingCenter.UI\wwwroot\Resources\" + locPage.PageName + ".en-GB.resx"))
+                using (ResXResourceWriter resx = new ResXResourceWriter(@"D:\Clients\Golf Tours\Code\App.UI\wwwroot\resources\" + locPage.PageName + ".en-GB.resx"))
                 {
                     foreach (var localizer in locPage.Data)
                     {
@@ -42,7 +42,7 @@ namespace JSharpLocalizer.API.Controllers
             }
 
             //update cshtml files
-            LocalizationService.UpdateCshtmlFiles(@"D:\Clients\Circle Divers\Code\DivingCenter.UI\Pages", localizerPages);
+            LocalizationService.UpdateCshtmlFiles(@"D:\Clients\Golf Tours\Code\App.UI\Pages", localizerPages);
 
             return Ok("Done");
         }
@@ -72,22 +72,26 @@ namespace JSharpLocalizer.API.Controllers
                 pageDoc.LoadHtml(fileContent);
 
                 List<Localizer> localizers = new List<Localizer>();
-                foreach (HtmlNode node in pageDoc.DocumentNode.SelectNodes("//text()[normalize-space()]"))
+                var docNodes = pageDoc.DocumentNode?.SelectNodes("//text()[normalize-space()]");
+                if (docNodes is not null)
                 {
-                    if (!string.IsNullOrEmpty(node.InnerText) &&
-                        !node.InnerText.Contains("@") &&
-                        !node.InnerText.Contains("{") &&
-                        !node.InnerText.Contains("}") &&
-                        !node.InnerText.All(char.IsDigit) &&
-                        !node.InnerText.Contains("$") &&
-                        !node.InnerText.Contains("€")
-                        )
+                    foreach (HtmlNode node in docNodes)
                     {
-                        var oldText = node.InnerText;
-                        var newText = $"<localize key='{ oldText.Replace(" ", string.Empty) }' default-text='{ oldText }' />";
-                        fileContent = fileContent.Replace(oldText, newText);
+                        if (!string.IsNullOrEmpty(node.InnerText) &&
+                            !node.InnerText.Contains("@") &&
+                            !node.InnerText.Contains("{") &&
+                            !node.InnerText.Contains("}") &&
+                            !node.InnerText.All(char.IsDigit) &&
+                            !node.InnerText.Contains("$") &&
+                            !node.InnerText.Contains("€")
+                            )
+                        {
+                            var oldText = node.InnerText;
+                            var newText = $"<localize key='{ oldText.Replace(" ", string.Empty) }' default-text='{ oldText }' />";
+                            fileContent = fileContent.Replace(oldText, newText);
 
-                        localizers.Add(new Localizer { Key = oldText.Replace(" ", string.Empty), Value = oldText });
+                            localizers.Add(new Localizer { Key = oldText.Replace(" ", string.Empty), Value = oldText });
+                        }
                     }
                 }
                 localizerPage.Data = localizers;

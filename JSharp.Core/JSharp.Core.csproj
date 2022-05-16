@@ -9,4 +9,8 @@
     <PackageReference Include="ICSharpCode.Decompiler" Version="7.2.0.6844" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Resources\" />
+  </ItemGroup>
+
 </Project>
